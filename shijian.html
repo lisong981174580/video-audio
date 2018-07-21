@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件演示</title>
+</head>
+<body>
+<!--
+preload:auto|meta|none
+auto:加载源数据和视屏的数据; meta:加载源数据 ; none:不加载数据
+-->
+ <button  id="start">开始</button>
+ <button  id="pause">暂停</button>
+<video  id="video" src="../ime.mp4"  preload="" controls="controls">不支持视屏</video>
+<script>
+     let video=document.getElementById('video');
+   /*以下都是事件*/
+        [
+         "loadstart",
+         "progress",
+         "suspend",
+         "abort",
+         "emptied",
+         "stalled",
+         "loadedmetadata",/*加载一份源数据  和preload有关*/
+         "loadeddata",
+         "canplaythrough",
+         "playing",
+         "waiting",
+         "seeking",
+         "enbed",
+         "durationchange",
+         "timeupdate",
+         "play",
+         "seeked",
+         "ratechange",
+         "volumechange",
+         "pause",
+         "error",
+         "canplay"
+      ].forEach(v=>{
+          video['on'+v]=()=> {
+              console.log(v)
+          }
+      });
+
+    /*属性和方法*/
+    let start=document.getElementById('start');
+    let pause=document.getElementById('pause');
+     start.onclick=()=>{
+         video.play(); //开始
+     }
+     pause.onclick=()=>{
+         video.pause();//暂停
+     }
+     video.onloadedmetadata=()=>{
+         console.log("视屏地址"+video.currentSrc);
+         console.log("视屏总时长"+video.duration);
+         console.log("视屏播放速率"+video.playbackRate);
+         console.log("是否暂停"+video.paused);
+         console.log("是否结束"+video.ended);
+         console.log("是否静音"+video.muted);
+     }
+
+     video.ontimeupdate=()=>{
+         console.log("视屏当前时间"+video.currentTime);
+         console.log("当前缓冲量"+video.buffered.end(0));
+     }
+
+     video.onvolumechange=()=>{
+         console.log("当前音量"+video.volume);
+     }
+
+
+</script>
+</body>
+</html>

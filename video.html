@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基本演示</title>
+</head>
+<body>
+<!--
+width :宽度
+controls:使用控制器
+loop:循环次数  -1位无数次
+poster:视屏播放前显示的封面
+preload:页面加载完成后主动加载视屏数据
+
+-->
+
+<!--写法一-->
+<video src="../ime.mp4" width="640"  autoplay="autoplay" loop="1" preload  controls="controls" poster="../1.jpg">不支持视屏</video>
+<!--写法二-->
+<video width="640" autoplay="autoplay" loop="1"  controls="controls" >
+    <!--
+    第一个失效的时候播放第二个
+    type：解码器
+    -->
+    <source src="../ime.mp4" type="video/mp4"/>
+    <source src="http://video.mukewang.com/mk.mp4" type="video/mp4"/>
+    不支持视屏
+</video>
+
+<!--和视屏大致一直-->
+<audio src="" >
+    不支持音频
+</audio>
+
+</body>
+</html>
